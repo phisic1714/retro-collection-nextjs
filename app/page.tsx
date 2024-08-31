@@ -3,7 +3,7 @@ import { Nostalgist } from 'nostalgist'
 
 const getGameData = async () => {
   try {
-    const res = await fetch("http://localhost:3000/database", { cache: "no-store" })
+    const res = await fetch("https://retro-collection-nextjs.vercel.app/database", { cache: "no-store" })
     return res.json()
   } catch (error) {
     console.log(error)
@@ -12,6 +12,7 @@ const getGameData = async () => {
 
 export default async function Home() {
 
+  let t
   const Game  = await getGameData()
   console.log(Game)
   return (
