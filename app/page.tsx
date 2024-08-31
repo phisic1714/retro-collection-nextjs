@@ -2,12 +2,12 @@ import Image from "next/image";
 import { Nostalgist } from 'nostalgist'
 
 const getGameData = async () => {
-  try {
+  // try {
     const res = await fetch(process.env.URL+"/database", { cache: "no-store" })
     return res.json()
-  } catch (error) {
-    console.log(error)
-  }
+  // } catch (error) {
+    // console.log(error)
+  // }
 }
 
 export default async function Home() {
