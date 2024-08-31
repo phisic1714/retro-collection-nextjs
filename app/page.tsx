@@ -12,13 +12,12 @@ const getGameData = async () => {
 
 export default async function Home() {
 
-  let t
   const Game  = await getGameData()
   console.log(Game)
   return (
     <main>
 
-      <>{Game.map((t) => (
+      <>{Game.map((t:any) => (
         <div className="flex flex-row grid grid-cols-4 gap-4">
           <div className="border border-current	 rounded-lg shadow-2xl">{t.Title}</div>
 
