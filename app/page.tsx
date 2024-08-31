@@ -3,7 +3,7 @@ import { Nostalgist } from 'nostalgist'
 
 const getGameData = async () => {
   try {
-    const res = await fetch(process.env.URL+"/database/", { cache: "no-store" })
+    const res = await fetch(process.env.URL+"/database", { cache: "no-store" })
     return res.json()
   } catch (error) {
     console.log(error)
