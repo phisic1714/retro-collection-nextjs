@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const play = () => {
   return (
-    <div>play</div>
-  )
-}
+    <div>
+      playsdasdหกฟฟหปแผแผปแ หฟกฟหกฟหกฟหฟหกฟกหฟกหฟกผwwwwwwwwwwwwหกฟหwหฟกwww
+      <br />
+      sdadassadxxxxxaxdassadฟหกปผผผผผผผผผผผผผผผผผผผผผผผผผผผผผผผผผผผ
+    </div>
+  );
+};
 
-export default play
+export default play;

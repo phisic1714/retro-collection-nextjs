@@ -1,12 +1,14 @@
 services:
   nextjs:
-    image: node:alpine
+    image: node:18-alpine
     working_dir: /app
     volumes:
       - .:/app
-      - /app/node_modules # ให้ container จัดการ node_modules เอง
+      - ./node_modules:/app/node_modules
     ports:
       - "5000:3000"
-    command: sh -c "npm install && npm run dev"
     environment:
       NODE_ENV: development
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+    command: sh -c "npm install && npm run dev"

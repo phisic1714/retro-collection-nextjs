@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const user = () => {
-  return (
-    <div>user</div>
-  )
-}
+  return <div>userหฟกฟหกหฟก</div>;
+};
 
-export default user
+export default user;
