@@ -1,8 +1,6 @@
 export const getSteamGames = async (steamid: string) => {
   try {
-    const res = await fetch(
-      `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=FCC3F2B22BC76F9C8FCBEFFA2630E355&steamid=${steamid}&format=json&include_appinfo=true`,
-    );
+    const res = await fetch(`../api/get-game?steamid=${steamid}`);
     const posts = await res.json();
     // setGameList(posts?.response);
     return posts?.response;
