@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.9",
+    "@udecode/cn": "^52.3.4",
+    "lodash": "^4.18.1",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
     "next": "^14.2.7",
@@ -18,6 +23,9 @@
     "react-emulatorjs": "^2.2.6"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.28.5",
+    "@locator/webpack-loader": "^0.5.1",
+    "@types/lodash": "^4.17.24",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

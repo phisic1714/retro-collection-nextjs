@@ -1,0 +1,25 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "title": "Super Mario Bros",
+      "year": 1985,
+      "platform": "NES",
+      "genre": "Platformer"
+    },
+    {
+      "id": 2,
+      "title": "The Legend of Zelda",
+      "year": 1986,
+      "platform": "NES",
+      "genre": "Adventure"
+    },
+    {
+      "id": 3,
+      "title": "Pac-Man",
+      "year": 1980,
+      "platform": "Arcade",
+      "genre": "Maze"
+    }
+  ]
+}

@@ -1,30 +1,91 @@
+"use client";
 import Image from "next/image";
-import { Nostalgist } from 'nostalgist'
+import { Nostalgist } from "nostalgist";
+import { useEffect, useState } from "react";
+import gameList from "./util/gameList.json";
+import { cn } from "@udecode/cn";
+import { Button, TextField } from "@mui/material";
+import { filter, sortBy, uniqBy } from "lodash";
 
-const getGameData = async () => {
-  // try {
-  const res = await fetch(process.env.URL + "/database", { cache: "no-store" })
-  return res.json()
-  // } catch (error) {
-  // console.log(error)
-  // }
-}
+export default function Home() {
+  const [gameList, setGameList] = useState<{
+    game_count: number;
+    games: any[];
+  }>({
+    game_count: 0,
+    games: [],
+  });
+  const [search, setSearch] = useState<string>("");
+  const openGame = (appid: any) => {
+    window.open(`steam://rungameid/${appid}`);
+  };
+  const getGameData = async (steamid: string) => {
+    try {
+      const res = await fetch(
+        `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=FCC3F2B22BC76F9C8FCBEFFA2630E355&steamid=${steamid}&format=json&include_appinfo=true`,
+      );
+      const posts = await res.json();
+      console.log("posts :>> ", posts);
+      // setGameList(posts?.response);
+      return posts?.response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const fetchApi = async () => {
+    const [list1, list2, list3] = await Promise.all([
+      getGameData("76561198159881009"),
+      getGameData("76561199223927734"),
+      getGameData("76561199223700662"),
+    ]);
+    const combinedGames = uniqBy(
+      [
+        ...(list1?.games ?? []),
+        ...(list2?.games ?? []),
+        ...(list3?.games ?? []),
+      ],
+      "appid",
+    );
+    console.log("combinedGames :>> ", combinedGames);
+    setGameList({
+      game_count: combinedGames.length,
+      games: sortBy(combinedGames, ["name"]),
+    });
+  };
+  const lists = filter(gameList?.games, function (o: any) {
+    const name = String(o?.name ?? "").toLowerCase();
+    const searchValue = search.toLowerCase();
 
-export default async function Home() {
-  const Game = await getGameData()
+    return search ? name.includes(searchValue) : name;
+  });
+  useEffect(() => {
+    fetchApi();
+  }, []);
+
   return (
-    <main>
-      <div className="flex flex-row grid grid-cols-4 gap-4 flex items-center">
-
-        <>{Game.map((t: any) => (
-          <div className="border border-current	 rounded-lg shadow-2xl text-center">
-            <img src={t.ImageURL} alt="Game Cover" className="object-contain  h-48 w-96"/>
-            {t.Title}</div>
-
+    <>
+      <TextField
+        value={search}
+        onChange={(e: any) => setSearch(e.target.value)}
+      ></TextField>
+      <div className="grid grid-cols-4 gap-4  ">
+        {lists?.map((v: any) => (
+          <div key={v?.appid}>
+            {v?.name}
+            <Button
+              onClick={() => {
+                openGame(v?.appid);
+              }}
+            >
+              <img
+                src={`https://steamcdn-a.akamaihd.net/steam/apps/${v?.appid}/header.jpg`}
+                onError={(e) => console.log("e :>> ", e)}
+                alt={v?.name}
+              ></img>
+            </Button>
+          </div>
         ))}
-        </>
       </div>
-
-    </main>
+    </>
   );
 }
