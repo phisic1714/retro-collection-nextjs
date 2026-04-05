@@ -2,11 +2,11 @@
 import Image from "next/image";
 import { Nostalgist } from "nostalgist";
 import { useEffect, useState } from "react";
-import gameList from "./util/gameList.json";
 import { cn } from "@udecode/cn";
-import { Button, TextField } from "@mui/material";
+import { Button, Slider, TextField } from "@mui/material";
 import { filter, sortBy, uniqBy } from "lodash";
 import { readFile } from "node:fs";
+import { getLoadData, getSteamGames, updateData } from "./fetch/fetchData";
 
 export default function Home() {
   const [gameList, setGameList] = useState<{
@@ -17,27 +17,23 @@ export default function Home() {
     games: [],
   });
   const [search, setSearch] = useState<string>("");
+  const [span, setSpan] = useState<number>(4);
+  const colClass: Record<number, string> = {
+    2: "grid-cols-2",
+    4: "grid-cols-4",
+    6: "grid-cols-6",
+    8: "grid-cols-8",
+    10: "grid-cols-10",
+    12: "grid-cols-12",
+  };
   const openGame = (appid: any) => {
     window.open(`steam://rungameid/${appid}`);
   };
-  const getGameData = async (steamid: string) => {
-    try {
-      const res = await fetch(
-        `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=FCC3F2B22BC76F9C8FCBEFFA2630E355&steamid=${steamid}&format=json&include_appinfo=true`,
-      );
-      const posts = await res.json();
-      console.log("posts :>> ", posts);
-      // setGameList(posts?.response);
-      return posts?.response;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const fetchApi = async () => {
+  const fetchSteamGames = async () => {
     const [list1, list2, list3] = await Promise.all([
-      getGameData("76561198159881009"),
-      getGameData("76561199223927734"),
-      getGameData("76561199223700662"),
+      getSteamGames("76561198159881009"),
+      getSteamGames("76561199223927734"),
+      getSteamGames("76561199223700662"),
     ]);
     const combinedGames = uniqBy(
       [
@@ -51,13 +47,10 @@ export default function Home() {
       game_count: combinedGames.length,
       games: sortBy(combinedGames, ["name"]),
     };
-    await fetch("/api/save-game", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(jsonData),
-    });
+    await updateData(jsonData);
+  };
+  const fetchGameJson = async () => {
+    const jsonData = await getLoadData();
     setGameList(jsonData);
   };
   const lists = filter(gameList?.games, function (o: any) {
@@ -67,18 +60,32 @@ export default function Home() {
     return search ? name.includes(searchValue) : name;
   });
   useEffect(() => {
-    fetchApi();
+    fetchSteamGames();
   }, []);
-
+  useEffect(() => {
+    fetchGameJson();
+  }, []);
   return (
     <>
       <TextField
-        className="flex flex-1 w-"
+        className="flex flex-1 w-1/2"
         placeholder="ค้นหาเกม"
         value={search}
         onChange={(e: any) => setSearch(e.target.value)}
+        size="small"
       ></TextField>
-      <div className="grid grid-cols-4 gap-4  ">
+      <Slider
+        defaultValue={4}
+        min={2}
+        max={12}
+        step={2}
+        value={span}
+        onChange={(_, v) => setSpan(v as number)}
+        valueLabelDisplay="auto"
+        marks
+        size="small"
+      ></Slider>
+      <div className={cn("grid gap-4", colClass?.[span])}>
         {lists?.map((v: any) => (
           <div key={v?.appid}>
             {v?.name}
