@@ -6,6 +6,7 @@ import gameList from "./util/gameList.json";
 import { cn } from "@udecode/cn";
 import { Button, TextField } from "@mui/material";
 import { filter, sortBy, uniqBy } from "lodash";
+import { readFile } from "node:fs";
 
 export default function Home() {
   const [gameList, setGameList] = useState<{
@@ -46,11 +47,18 @@ export default function Home() {
       ],
       "appid",
     );
-    console.log("combinedGames :>> ", combinedGames);
-    setGameList({
+    const jsonData = {
       game_count: combinedGames.length,
       games: sortBy(combinedGames, ["name"]),
+    };
+    await fetch("/api/save-game", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
     });
+    setGameList(jsonData);
   };
   const lists = filter(gameList?.games, function (o: any) {
     const name = String(o?.name ?? "").toLowerCase();
@@ -65,6 +73,8 @@ export default function Home() {
   return (
     <>
       <TextField
+        className="flex flex-1 w-"
+        placeholder="ค้นหาเกม"
         value={search}
         onChange={(e: any) => setSearch(e.target.value)}
       ></TextField>
