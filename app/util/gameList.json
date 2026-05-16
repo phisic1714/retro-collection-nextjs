@@ -1,5 +1,5 @@
 {
-  "game_count": 176,
+  "game_count": 181,
   "games": [
     {
       "appid": 211670,
@@ -585,16 +585,52 @@
       "playtime_disconnected": 0
     },
     {
-      "appid": 742120,
-      "name": "DRAGON QUEST® XI: Echoes of an Elusive Age™",
-      "playtime_forever": 2226,
-      "img_icon_url": "33447976fe604fcd96bbf0b4f41f865228cdbad2",
+      "appid": 379720,
+      "name": "DOOM",
+      "playtime_2weeks": 894,
+      "playtime_forever": 1807,
+      "img_icon_url": "b6e72ff47d1990cb644700751eeeff14e0aba6dc",
       "has_community_visible_stats": true,
-      "playtime_windows_forever": 55,
+      "playtime_windows_forever": 1807,
       "playtime_mac_forever": 0,
       "playtime_linux_forever": 0,
       "playtime_deck_forever": 0,
-      "rtime_last_played": 1740930238,
+      "rtime_last_played": 1777810376,
+      "content_descriptorids": [
+        2,
+        5
+      ],
+      "playtime_disconnected": 0
+    },
+    {
+      "appid": 782330,
+      "name": "DOOM Eternal",
+      "playtime_2weeks": 1542,
+      "playtime_forever": 1542,
+      "img_icon_url": "14235f425d27ab3b83661ba14c17d22dc90e566b",
+      "has_community_visible_stats": true,
+      "playtime_windows_forever": 1542,
+      "playtime_mac_forever": 0,
+      "playtime_linux_forever": 0,
+      "playtime_deck_forever": 0,
+      "rtime_last_played": 1778343155,
+      "content_descriptorids": [
+        2,
+        5
+      ],
+      "playtime_disconnected": 0
+    },
+    {
+      "appid": 742120,
+      "name": "DRAGON QUEST® XI: Echoes of an Elusive Age™",
+      "playtime_forever": 3028,
+      "img_icon_url": "33447976fe604fcd96bbf0b4f41f865228cdbad2",
+      "has_community_visible_stats": true,
+      "playtime_windows_forever": 858,
+      "playtime_mac_forever": 0,
+      "playtime_linux_forever": 0,
+      "playtime_deck_forever": 0,
+      "rtime_last_played": 1776513556,
       "content_descriptorids": [
         2,
         5
@@ -1568,14 +1604,14 @@
     {
       "appid": 798460,
       "name": "Ni no Kuni Wrath of the White Witch™ Remastered",
-      "playtime_forever": 1807,
+      "playtime_forever": 2067,
       "img_icon_url": "c2ab51aa5079f5e64e6128b247057c165555ca8e",
       "has_community_visible_stats": true,
-      "playtime_windows_forever": 1807,
+      "playtime_windows_forever": 2067,
       "playtime_mac_forever": 0,
       "playtime_linux_forever": 0,
       "playtime_deck_forever": 0,
-      "rtime_last_played": 1774088652,
+      "rtime_last_played": 1775924545,
       "playtime_disconnected": 0
     },
     {
@@ -1583,7 +1619,10 @@
       "name": "ONE PIECE PIRATE WARRIORS 3",
       "playtime_forever": 0,
       "img_icon_url": "f8d8859c604acf2709a8e8de6907d4d4f91520f6",
-      "has_community_visible_stats": true
+      "has_community_visible_stats": true,
+      "content_descriptorids": [
+        5
+      ]
     },
     {
       "appid": 587620,
@@ -1659,6 +1698,59 @@
       "rtime_last_played": 1711812511,
       "content_descriptorids": [
         2,
+        5
+      ],
+      "playtime_disconnected": 0
+    },
+    {
+      "appid": 1809700,
+      "name": "Persona 3 Portable",
+      "playtime_2weeks": 684,
+      "playtime_forever": 684,
+      "img_icon_url": "b6f25fd0398fa2d09e9f3994d70a91c9a1474c60",
+      "has_community_visible_stats": true,
+      "playtime_windows_forever": 684,
+      "playtime_mac_forever": 0,
+      "playtime_linux_forever": 0,
+      "playtime_deck_forever": 0,
+      "rtime_last_played": 1778422789,
+      "content_descriptorids": [
+        1,
+        5
+      ],
+      "playtime_disconnected": 0
+    },
+    {
+      "appid": 1113000,
+      "name": "Persona 4 Golden",
+      "playtime_forever": 0,
+      "img_icon_url": "295e86f2d5393325f38f33777b357d86e23c751d",
+      "has_community_visible_stats": true,
+      "playtime_windows_forever": 0,
+      "playtime_mac_forever": 0,
+      "playtime_linux_forever": 0,
+      "playtime_deck_forever": 0,
+      "rtime_last_played": 0,
+      "content_descriptorids": [
+        1,
+        2,
+        5
+      ],
+      "playtime_disconnected": 0
+    },
+    {
+      "appid": 1687950,
+      "name": "Persona 5 Royal",
+      "playtime_forever": 0,
+      "img_icon_url": "2f868d8c16fc357dc7122d440b9de3916e36e6fa",
+      "has_community_visible_stats": true,
+      "playtime_windows_forever": 0,
+      "playtime_mac_forever": 0,
+      "playtime_linux_forever": 0,
+      "playtime_deck_forever": 0,
+      "rtime_last_played": 0,
+      "content_descriptorids": [
+        1,
         5
       ],
       "playtime_disconnected": 0
@@ -2255,14 +2347,14 @@
     {
       "appid": 612880,
       "name": "Wolfenstein II: The New Colossus",
-      "playtime_forever": 0,
+      "playtime_forever": 790,
       "img_icon_url": "fd5c894c47b49a7d5e46e7ed60d6f1fdf60d210d",
       "has_community_visible_stats": true,
-      "playtime_windows_forever": 0,
+      "playtime_windows_forever": 790,
       "playtime_mac_forever": 0,
       "playtime_linux_forever": 0,
       "playtime_deck_forever": 0,
-      "rtime_last_played": 0,
+      "rtime_last_played": 1775900084,
       "content_descriptorids": [
         1,
         2,
@@ -2308,15 +2400,14 @@
     {
       "appid": 350080,
       "name": "Wolfenstein: The Old Blood ",
-      "playtime_2weeks": 127,
-      "playtime_forever": 127,
+      "playtime_forever": 424,
       "img_icon_url": "e45bc4d7a8233546c74f1cbba4e7d7a02bfc53a0",
       "has_community_visible_stats": true,
-      "playtime_windows_forever": 127,
+      "playtime_windows_forever": 424,
       "playtime_mac_forever": 0,
       "playtime_linux_forever": 0,
       "playtime_deck_forever": 0,
-      "rtime_last_played": 1775325238,
+      "rtime_last_played": 1775580381,
       "has_leaderboards": true,
       "content_descriptorids": [
         2,
